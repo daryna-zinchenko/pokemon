@@ -1,12 +1,28 @@
-import React from 'react';
-import styles from './App.module.scss';
+import React, { useCallback, useState } from 'react';
+import './App.scss';
+import { PokemonsList } from './components/PokemonsList';
+import { getAll, getFiltered } from './api/pokemons';
+import { Pokemon } from './types/pokemon';
 
-function App() {
+export const App: React.FC = () => {
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+
+  useCallback(async () => {
+    const pokemons = await getAll();
+    setPokemons(pokemons);
+  }, []);
+
+  async function handleFilter(filter: string) {
+    const pokemons = await getFiltered(filter);
+    setPokemons(pokemons);
+  };
+
+  console.log(pokemons);
+
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Hello, TypeScript and SCSS!</h1>
+    <div>
+      <h1>Pokedex</h1>
+      <PokemonsList pokemons={pokemons} handleFilter={handleFilter} />
     </div>
   );
-}
-
-export default App;
+};

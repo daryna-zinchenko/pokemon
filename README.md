@@ -1,4 +1,4 @@
-# [Pokemons]
+# Pokemons
 [link to gh-pages](https://daryna-zinchenko.github.io/pokemon/)
 
 This is a simple web application that contains info about pokemons.
