@@ -1,5 +1,7 @@
-# Pokemons [http://localhost:3000]
- This is a simple web application that contains info about pokemons.
+# [Pokemons]
+[link to gh-pages](https://daryna-zinchenko.github.io/pokemon/)
+
+This is a simple web application that contains info about pokemons.
 
 ## Technologies Used
 This application is built using the following technologies:
