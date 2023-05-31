@@ -11,7 +11,7 @@ type Props = {
 export const PokemonsList: React.FC<Props> = ({ pokemons, handleFilter }) => (
   <div className="pokeColumns">
     <div className="pokeColumn">
-      <div className="pokemonsgrid">
+      <div className="pokemons">
         {pokemons.map(pokemon => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} handleFilter={handleFilter} />
         ))}
