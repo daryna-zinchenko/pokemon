@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { PokemonsList } from './components/PokemonsList';
 import { getAll, getFiltered } from './api/pokemons';
@@ -7,9 +7,12 @@ import { Pokemon } from './types/pokemon';
 export const App: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
-  useCallback(async () => {
-    const pokemons = await getAll();
-    setPokemons(pokemons);
+  useEffect(() => {
+    async function fetchData() {
+      const pokemons = await getAll();
+      setPokemons(pokemons);
+    }
+    fetchData();
   }, []);
 
   async function handleFilter(filter: string) {
