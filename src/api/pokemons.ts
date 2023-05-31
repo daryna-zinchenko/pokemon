@@ -20,10 +20,3 @@ export const getAll = () => {
       );
     });
 };
-
-export const getFiltered = (filter: string) => {
-  return getAll()
-    .then(Pokemons => Pokemons
-      .filter(pokemon => pokemon.types
-        .find(types => types.type.name === filter)));
-};
