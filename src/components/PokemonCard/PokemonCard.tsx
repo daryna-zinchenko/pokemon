@@ -12,7 +12,7 @@ export const PokemonCard: React.FC<Props> = ({ pokemon, handleFilter }) => (
     className="pokemon"
     key={pokemon.id}
   >
-    <img className="pokemon__img"></img>
+    <img className="pokemon__img" alt=""></img>
     <p className="pokemon__name">{pokemon.name}</p>
     <div className="pokemon__types">
       {pokemon.types.map(indice => {
