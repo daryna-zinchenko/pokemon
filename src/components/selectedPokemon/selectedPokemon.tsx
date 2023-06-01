@@ -3,18 +3,28 @@ import "./selectedPokemon.scss"
 import { Pokemon } from "../../types/pokemon";
 
 type Props = {
-  pokemon: Pokemon
+  pokemon: Pokemon;
 };
-
 export const SelectedPokemon: React.FC<Props> = ({ pokemon }) => {
   return (
-    <div className="selectedPokemon">
-      <div className="selectedPokemon__image">
-        <img src='/' alt=""/>
-      </div>
-      <div className="selectedPokemon__info">
-        <h2>{pokemon.name}</h2>
-      </div>
+    <div className="selectedPokemon"
+    >
+      <img className="selectedPokemon__img" alt=""></img>
+      <p className="selectedPokemon__name">{pokemon.name}</p>
+      <div className="selectedPokemon__types">
+        {pokemon.types.map(indice => {
+          return (
+            <button
+              className={indice.type.name}
+              key={indice.type.name}
+              value={indice.type.name}
+            >
+              {indice.type.name}
+            </button>
+          )
+        }
+        )}
     </div>
-  );
+    </div>
+  )
 }

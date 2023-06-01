@@ -4,17 +4,22 @@ import "./PokemonCard.scss";
 
 type Props = {
   pokemon: Pokemon,
-  handleFilter: (filter: string) => void
+  handleFilter: (filter: string) => void,
+  handleChoise: (pokemon: Pokemon) => void
 };
 
-export const PokemonCard: React.FC<Props> = ({ pokemon, handleFilter }) => (
+export const PokemonCard: React.FC<Props> = ({ pokemon, handleFilter, handleChoise }) => (
   <div
     className="pokemon"
     key={pokemon.id}
+    onClick={() => handleChoise(pokemon)}
   >
     <img className="pokemon__img" alt=""></img>
     <p className="pokemon__name">{pokemon.name}</p>
-    <div className="pokemon__types">
+    <div 
+      className="pokemon__types"
+      onClick={(event) => event.stopPropagation()}
+    >
       {pokemon.types.map(indice => {
         return (
           <button
