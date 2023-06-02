@@ -23,7 +23,7 @@ export const PokemonCard: React.FC<Props> = ({ pokemon, handleFilter, handleChoi
       {pokemon.types.map(indice => {
         return (
           <button
-            className={indice.type.name}
+            className={indice.type.name + " pokemon__type"}
             key={indice.type.name}
             value={indice.type.name}
             onClick={(e) => handleFilter((e.target as HTMLButtonElement).value)}>

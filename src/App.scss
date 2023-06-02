@@ -2,8 +2,18 @@
   box-sizing: border-box;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  padding: 50px;
+  padding: 40px;
+  min-width: 380px;
+}
+
+img {
+  margin-bottom: 20px;
 }
 
 .appTitle {

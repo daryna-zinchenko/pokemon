@@ -1,0 +1,39 @@
+.selectedPokemon {
+  position: fixed;
+  border: 1px solid #a0a0a0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  align-items: center;
+
+  &__img {
+      width: 220px;
+      height: 220px;
+    }
+
+  &__name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+  }
+
+  &__grid {
+    width: 100%;
+    display: grid;
+    border-top: 1px solid #a0a0a0;
+    border-left: 1px solid #a0a0a0;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  &__gridItem {
+    line-height: 30px;
+    flex-direction: column;
+    text-align: center;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    font-size: medium;
+  }
+}
