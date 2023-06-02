@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React from "react";
 import { Pokemon } from '../../types/pokemon';
 import { PokemonCard } from "../PokemonCard/PokemonCard";
 import "./PokemonsList.scss";
