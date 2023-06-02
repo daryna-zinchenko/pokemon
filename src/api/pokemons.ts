@@ -1,22 +1,22 @@
 import axios from "axios";
 import { Pokemon } from '../types/pokemon';
-import { Snippet } from '../types/snippet';
+import { PokemonsData, Snippet } from '../types/pokemonsData';
 
-const API_URL = `https://pokeapi.co/api/v2/pokemon`;
-
-export function getLinks(): Promise<Snippet[]> {
-  return axios.get(API_URL)
-    .then(response => response.data.results);
+export function getLinks(url: string): Promise<PokemonsData> {
+  return axios.get(url)
+    .then(response => response.data);
 }
 
-export const getAll = () => {
-  return getLinks()
-    .then(snippets => {
-      return Promise.all(
-        snippets.map(snippet => {
+export const getAll = (url: string) => {
+  return getLinks(url)
+    .then(data => {
+      const nextUrl = data.next;
+      const pokemons = Promise.all(
+        data.results.map((snippet: Snippet) => {
           return axios.get<Pokemon>(snippet.url)
             .then(response => response.data);
         })
       );
+      return {pokemons, nextUrl};
     });
 };

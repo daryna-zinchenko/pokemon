@@ -7,11 +7,13 @@ import { Pokemon } from './types/pokemon';
 export const App: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [visiblePokemons, setVisiblePokemons] = useState<Pokemon[]>([]);
+  const [fetchUrl, setFetchUrl] = useState<string>('https://pokeapi.co/api/v2/pokemon/?offset=48&limit=12');
 
   const getPokemons = async () => {
-    const pokemons = await getAll();
-    setPokemons(pokemons);
-    setVisiblePokemons(pokemons);
+    const pokemonsData = await getAll(fetchUrl);
+    setPokemons([...pokemons, ...await pokemonsData.pokemons]);
+    setVisiblePokemons([...visiblePokemons, ...await pokemonsData.pokemons]);
+    setFetchUrl(pokemonsData.nextUrl)
   };
 
   useEffect(() => {
@@ -24,6 +26,10 @@ export const App: React.FC = () => {
     setVisiblePokemons(filteredPokemons);
   };
 
+  function handleLoadMore() {
+    getPokemons();
+  };
+
 
   return (
     <div className='App'>
@@ -33,7 +39,12 @@ export const App: React.FC = () => {
       >
         Pokedex
       </h1>
-      <PokemonsList pokemons={visiblePokemons} handleFilter={handleFilter} />
+      <PokemonsList 
+        fetchUrl={fetchUrl}
+        pokemons={visiblePokemons}
+        handleFilter={handleFilter}
+        handleLoadMore={handleLoadMore}
+      />
     </div>
   );
 };
