@@ -1,10 +1,12 @@
 .pokeColumns {
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 .pokeColumn {
   width: 50%;
+  padding-left: 10%;
 }
 
 .cardColumn {
@@ -14,7 +16,20 @@
 
 .pokemons {
   display: flex;
-  padding-left: 20%;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 20px;
+}
+
+.loadButton {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #9e9e9e;
+  border-radius: 5px;
+  background-color: #46a8ff;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  font-size: large;
+  font-weight: bold;
 }

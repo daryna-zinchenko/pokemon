@@ -29,6 +29,9 @@ export const PokemonsList: React.FC<Props> = ({ pokemons, handleFilter }) => {
             />
           ))}
         </div>
+        <div className='loadButton'>
+         Load More
+        </div>
       </div>
       <div className="cardColumn">
         {choosenPokemon && <SelectedPokemon pokemon={choosenPokemon} />}
